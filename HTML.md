@@ -26,7 +26,7 @@
 3. html 的标签有开始也要有结束：
 	- \<head>\</head>
 4. html 代码不区分大小写
-5. 有些标签没有结束标签，在标签内结束
+5. 有些标签没有结束标签，在标签内结束，如：
 	- 换行标签：`<br\>`
 	- 分水平线标签：`<hr\>`
 
@@ -89,7 +89,7 @@
 ```html
 <html>
 	<dl>
-		<dt>上层</dt>
+		<dt>上层内容</dt>
 		<dd>内容</dd>
 		<dd>内容</dd>
 	</dl>
@@ -169,4 +169,222 @@
 #### 原样输出标签
 
 - `<pre></pre>`
-> 会把
+> 会把缩进等**全部**格式原样输出到网页
+
+#### 表格标签
+
+可以对数据进行格式化，使数据显示更清晰
+- `<table></table>` : 表示表格的范围，可省略
+	- `<caption></caption>` : 表格的标题
+	- `<tr></tr>` : 一行
+		- `<td></td>` : 单元格
+- 使用`<th></th>`可以实现居中和加粗（表头）
+- 属性：
+	- border : 边界线
+	- borderbolor : 边界线颜色
+	- cellspacing : 边界间隔
+	- width : 表格宽度
+	- heigth : 表格高度
+	- align : 设置显示方式：`left`（居左）,`center`（居中）,`right`（居右）
+	- 合并单元格：
+		- rowspan : 跨行
+		- colspan : 跨列
+> 注：如果表格内没有内容，使用空格作为占位符
+例：
+<html>
+	<table>
+		<!--<caption>
+			表格标签的属性
+		</caption>
+		-->
+		<tr align="center">
+			<th colspan=3>表格标签的属性</th>
+		</tr>
+		<tr align="center">
+			<th>系列</th>
+			<th>属性名</th>
+			<th>介绍</th>
+		</tr>
+		<tr align="center">
+			<td rowspan=3>边框</td>
+			<td>border</td>
+			<td>边界线</td>
+		</tr>
+		<tr align="center">
+			<td>borderbolor</td>
+			<td>边界线颜色</td>
+		</tr>
+		<tr align="center">
+			<td>cellspacing</td>
+			<td>边界间隔</td>
+		</tr>
+		<tr align="center">
+			<td rowspan=2>大小</td>
+			<td>width</td>
+			<td>表格宽度</td>
+		</tr>
+		<tr align="center">
+			<td>heigth</td>
+			<td>表格高度</td>
+		</tr>
+		<tr align="center">
+			<td>显示方式</td>
+			<td>align</td>
+			<td>显示方式</td>
+		</tr>
+		<tr align="center">
+			<td rowspan=2>合并单元格</td>
+			<td>rowspan</td>
+			<td>跨行</td>
+		</tr>
+		<tr align="center">
+			<td>colspan  </td>
+			<td>跨列</td>
+		</tr>
+	</table>
+</html>
+
+#### 表单标签
+
+> 提交数据到服务器的过程可以使用表单标签实现
+- `<form></form>` : 定义一个表单的范围
+	- 属性：
+		- action: 提交到的地址，默认提交到当前页面
+		- method: 表单提交方式，最常用的两种：`get` , `post`
+		> 区别：get 请求地址栏会携带提交的数据，安全性较低，有数据大小的限制
+		- `enctype`: 用于文件上传的表单提交方式
+- 输入项：
+	- 普通输入项
+		`<input type="text"/>`
+		<input type="text"/>
+	- 密码输入项
+		`<input type="password"/>`
+		<input type="password"/>
+	- 单选输入项
+		`<input type="radio" name="name1"/>`
+		<input type="radio" name="name1" checked/>女 <input type="radio" name="name1"/>男
+	> 注：需要默认选中，则添加属性`checked="checked"`
+	- 复选输入框
+		`<input type="checkbox" name="name2"/>`
+		<input type="checkbox" name="name2"/>1<input type="checkbox" name="name2" checked/>2
+	> 注：需要默认选中，则添加属性`checked="checked"`
+	- 文件输入项
+		`<input type="file"/>`
+		<input type="file"/>
+	- 下拉输入项（不在 input 标签内）
+
+		```html
+		<select name="name3">
+			<option value="0">请选择</option>
+			<option value="1990">1990</option>
+			<option value="1991">1991</option>
+		</select>
+		```
+
+		<select name="name3">
+		<option value="0">请选择</option>
+		<option value="1990" selected>1990</option>
+		<option value="1991" >1991</option>
+		</select>
+	> 注：需要默认选中，则添加属性`selected="selected"`
+	- 文本域
+		`<textarea cols=10 rows= 2></textarea>`
+		<textarea cols=10 rows= 2></textarea>
+	- 隐藏项
+		`<input type="hidden"/>`
+		<input type="hidden"/>
+	- 提交按钮
+		`<input type="submit" value="value"/>`
+		<input type="submit" value="value"/>
+	<b><font size="5">注 1: 只有设置了 name 属性之后才会被提交</font></b>
+	**<font size="5">注 2: 单复选框只有设置了 value 属性之后才能识别</font>**
+	- 使用图片提交按钮
+		`<input type="image" src=""/>`
+		<input type="image"
+	- 重置按钮
+		`<input type="reset" value="value-R"/>`
+		<input type="reset" value="value-R"/>
+	- 普通按钮（与 js 一起使用）
+		`<input type="button" value="value-B"/>`
+		<input type="button" value="value-B"/>
+
+#### 字体标签
+
+##### 加粗标签
+
+- `<b></b>`
+<b>加粗</b>
+
+##### 下划线
+
+- `<u></u>`
+<u>下划线</u>
+
+##### 斜体
+
+- `<i></i>`
+<i>斜体</i>
+
+##### 删除线
+
+- `<s></s>`
+<s>删除线</s>
+
+##### 下标
+
+- `<sub></sub>`
+下<sub>标</sub>
+
+##### 上标
+
+- `<sup></sup>`
+上<sup>标</sup>
+
+#### 分支标签
+
+- `<div></div>`
+会自动换行
+- `<span></span>`
+在一行显示
+
+#### 段落标签
+
+- `<p></p>`
+
+### HTML 头标签
+
+#### 指定页面名称
+
+- `<title></title>`
+
+#### 指定页面基本信息
+
+- `<meta/>`（较少使用）
+	例：
+	1. 3 秒后定时跳转到 xxx.html:
+	`<meta http-equiv="refresh" content="3;url=xxx.html"/>`
+
+#### 指定超链接的基本设置
+
+- `<base/>`
+	例：
+	`<base target="_blank"/>`
+	（设置页面内超链接默认全部在新窗口打开）
+
+#### 引入外部文件
+
+- `<link/>`
+
+### HTML 框架标签
+
+- `<frameset>`
+	- `<frame>`（具体显示的页面）
+- 属性：
+	- rows: 按行进行划分
+	- cols: 按列进行划分
+		- name: 名称
+		- src: 页面路径
+
+<b><font size="4">注 : 使用框架标签时,不能写在\<body>内,需要把\<body>标签去除</font></b>
+
+一个应用：可以在超链接中的 target 属性中设置 name, 点击链接在右边的界面中显示，如各大网盘
