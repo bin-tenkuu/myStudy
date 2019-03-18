@@ -1,5 +1,9 @@
 # CSS
 
+CSS 参考手册：
+1. [翻墙版](http://css.doyoe.com/)
+2. [github版](https://github.com/doyoe/css-handbook)
+
 ## CSS 的简介
 
 层叠样式表
@@ -32,7 +36,7 @@ css 将网页内容和显示样式进行了分离，提高了后期样式代码�
 
 4. 使用头标签`<link>`, 引入外部 css 文件
 
-> `<link rel="styleshset" type="text/css" href="css.filepath"/>`
+> `<link rel="stylesheet" type="text/css" href="css.filepath"/>`
 
 **注：在某些浏览器下，第三种结合方式不起作用 ( 如 IE5,IE6), 故一般使用第四种方式**
 
