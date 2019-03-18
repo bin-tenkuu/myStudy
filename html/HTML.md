@@ -256,21 +256,16 @@ Hypertext Markup Language: 超文本标记语言，网页语言
 - 输入项：
 	- 普通输入项
 		`<input type="text"/>`
-		<input type="text"/>
 	- 密码输入项
 		`<input type="password"/>`
-		<html><body><input type="password"/></body></html>
 	- 单选输入项
 		`<input type="radio" name="name1"/>`
-		<input type="radio" name="name1" checked/>女 <input type="radio" name="name1"/>男
 	> 注：需要默认选中，则添加属性`checked="checked"`
 	- 复选输入框
 		`<input type="checkbox" name="name2"/>`
-		<input type="checkbox" name="name2"/>1<input type="checkbox" name="name2" checked/>2
 	> 注：需要默认选中，则添加属性`checked="checked"`
 	- 文件输入项
 		`<input type="file"/>`
-		<input type="file"/>
 	- 下拉输入项（不在 input 标签内）
 
 		```html
@@ -280,33 +275,22 @@ Hypertext Markup Language: 超文本标记语言，网页语言
 			<option value="1991">1991</option>
 		</select>
 		```
-
-		<select name="name3">
-		<option value="0">请选择</option>
-		<option value="1990" selected>1990</option>
-		<option value="1991" >1991</option>
-		</select>
 	> 注：需要默认选中，则添加属性`selected="selected"`
 	- 文本域
 		`<textarea cols=10 rows= 2></textarea>`
-		<textarea cols=10 rows= 2></textarea>
 	- 隐藏项
 		`<input type="hidden"/>`
 		<input type="hidden"/>
 	- 提交按钮
 		`<input type="submit" value="value"/>`
-		<input type="submit" value="value"/>
 	<b><font size="5">注 1: 只有设置了 name 属性之后才会被提交</font></b>
 	**<font size="5">注 2: 单复选框只有设置了 value 属性之后才能识别</font>**
 	- 使用图片提交按钮
 		`<input type="image" src=""/>`
-		<input type="image"
 	- 重置按钮
 		`<input type="reset" value="value-R"/>`
-		<input type="reset" value="value-R"/>
 	- 普通按钮（与 js 一起使用）
 		`<input type="button" value="value-B"/>`
-		<input type="button" value="value-B"/>
 
 ### 字体标签
 
