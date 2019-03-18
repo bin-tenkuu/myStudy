@@ -259,7 +259,7 @@ Hypertext Markup Language: 超文本标记语言，网页语言
 		<input type="text"/>
 	- 密码输入项
 		`<input type="password"/>`
-		<input type="password"/>
+		<html><body><input type="password"/></body></html>
 	- 单选输入项
 		`<input type="radio" name="name1"/>`
 		<input type="radio" name="name1" checked/>女 <input type="radio" name="name1"/>男
