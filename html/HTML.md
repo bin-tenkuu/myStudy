@@ -275,6 +275,7 @@ Hypertext Markup Language: 超文本标记语言，网页语言
 			<option value="1991">1991</option>
 		</select>
 		```
+
 	> 注：需要默认选中，则添加属性`selected="selected"`
 	- 文本域
 		`<textarea cols=10 rows= 2></textarea>`
@@ -371,4 +372,7 @@ Hypertext Markup Language: 超文本标记语言，网页语言
 
 <b><font size="4">注 : 使用框架标签时,不能写在\<body>内,需要把\<body>标签去除</font></b>
 
-一个应用：可以在超链接中的 target 属性中设置 name, 点击链接在右边的界面中显示，如各大网盘
+应用：可以在超链接中的 target 属性中设置 name, 点击链接在右边的界面中显示，如各大网盘
+
+<b><font size="5">注 : 本标签已过时,使用`<iframe><iframe>`标签代替</font></b>
+<iframe><iframe>
