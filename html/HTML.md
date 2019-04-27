@@ -95,6 +95,11 @@ Hypertext Markup Language: 超文本标记语言，网页语言
 	</dl>
 </html>
 ```
+><dl>
+><dt>上层内容</dt>
+><dd>内容</dd>
+><dd>内容</dd>
+></dl>
 
 2. 有序列表 (ol 标签）
 - `<ol></ol>` : 有序列表范围
@@ -183,6 +188,7 @@ Hypertext Markup Language: 超文本标记语言，网页语言
 	- border : 边界线
 	- borderbolor : 边界线颜色
 	- cellspacing : 边界间隔
+	- celllpadding : 单元格内边距
 	- width : 表格宽度
 	- heigth : 表格高度
 	- align : 设置显示方式：`left`（居左）,`center`（居中）,`right`（居右）
@@ -275,6 +281,7 @@ Hypertext Markup Language: 超文本标记语言，网页语言
 			<option value="1991">1991</option>
 		</select>
 		```
+	> 可用`<optgtoup lable="name">`设置选项组
 
 	> 注：需要默认选中，则添加属性`selected="selected"`
 	- 文本域
