@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<title>太极图</title>
+	<style>
+		div:first-child {
+			width: 200px;
+			height: 200px;
+			background-color: gray;
+			margin: 0 auto;
+		}
+
+		div:first-child::after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+
+		#LBHC, #RBHC {
+			height: 200px;
+			width: 100px;
+			position: relative;
+		}
+
+		#LBHC {
+			border-radius: 100px 0 0 100px;
+			background-color: #000000;
+			float: left;
+		}
+
+		#RBHC {
+			border-radius: 0 100px 100px 0;
+			background-color: #fff;
+			float: left;
+		}
+
+		#LCHC, #RCHC {
+			height: 100px;
+			width: 50px;
+			position: absolute;
+		}
+
+		#LCHC {
+			border-radius: 50px 0 0 50px;
+			background-color: #fff;
+			top: 0;
+			right: 0;
+		}
+
+		#RCHC {
+			border-radius: 0 50px 50px 0;
+			background-color: #000000;
+			bottom: 0;
+			left: 0;
+		}
+
+		#LC, #RC {
+			height: 30px;
+			width: 30px;
+			border-radius: 50%;
+			position: absolute;
+		}
+
+		#LC {
+			top: 50%;
+			right: 0;
+			margin-top: -15px;
+			margin-right: -15px;
+			background-color: #000000;
+			z-index: 2;
+		}
+
+		#RC {
+			bottom: 50%;
+			left: 0;
+			margin-bottom: -15px;
+			margin-left: -15px;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+<div>
+	<div id="LBHC">
+		<div id="LCHC">
+			<div id="LC"></div>
+		</div>
+	</div>
+	<div id="RBHC">
+		<div id="RCHC">
+			<div id="RC"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
