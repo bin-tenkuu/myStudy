@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <title>手风琴</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        div, ul, li, img {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 1200px;
+            height: 300px;
+            overflow: hidden;
+            border: 1px solid red;
+            margin: 100px auto 0;
+        }
+
+        #box > ul {
+            width: 1250px;
+        }
+
+        #box > ul :after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        #box > ul > li {
+            width: 200px;
+            height: 300px;
+            float: left;
+            list-style: none;
+        }
+    </style>
+<body>
+<div id="box">
+    <ul>
+        <li><img alt="01" src="手风琴_file/01.jpg"></li>
+        <li><img alt="02" src="手风琴_file/02.jpg"></li>
+        <li><img alt="03" src="手风琴_file/03.jpg"></li>
+        <li><img alt="04" src="手风琴_file/04.jpg"></li>
+        <li><img alt="05" src="手风琴_file/05.jpg"></li>
+        <li><img alt="06" src="手风琴_file/06.jpg"></li>
+    </ul>
+</div>
+</body>
+<script>
+    $(() => {
+        $("#box>ul").on("mouseenter", "li", function () {
+            $(this).stop().animate({"width": "500px"}, 500).siblings().stop().animate({"width": "141px"}, 500)
+        }).on("mouseleave", "li", function () {
+            $("#box>ul>li").stop().animate({"width": "201px"}, 500);
+        })
+    })
+</script>
+</html>

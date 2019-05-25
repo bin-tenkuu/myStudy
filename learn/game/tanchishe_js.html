@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <title>贪吃蛇 by:bin</title>
+    <style>
+        div, button {
+            padding: 0;
+            margin: 0;
+        }
+
+        #map {
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        #food {
+            position: absolute;
+        }
+
+        .snake {
+            position: absolute;
+        }
+
+        #game {
+            /*top: 50%;*/
+            width: 500px;
+            height: 300px;
+            position: relative;
+            background: #7BC96F;
+            border: 2px;
+            border-radius: 50px;
+            margin: -150px auto 0;
+            font: 80px 'Consolas';
+            top: 50%;
+        }
+
+        #game_text {
+            width: 200%;
+            height: 50%;
+            color: aqua;
+            line-height: 200%;
+        }
+
+        #game_btn {
+            width: 100%;
+            height: 50%;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            bottom: 0;
+            font: 80px 'Consolas';
+        }
+    </style>
+</head>
+<body>
+</body>
+<script>
+    "use strict";
+
+    /** map*/
+    class Map {
+        constructor(width, height, bgColor) {
+            this.width = width;
+            this.height = height;
+            this.bgColor = bgColor;
+            this.div = null;
+        }
+
+        init() {
+            let map = document.createElement("div");
+            map.id = "map";
+            map.style.width = this.width + "px";
+            map.style.height = this.height + "px";
+            map.style.backgroundColor = this.bgColor;
+            document.body.appendChild(map);
+            this.div = document.getElementById("map");
+        }
+    }
+
+    /** food*/
+    class Food {
+        constructor(width, height, bgColor) {
+            this.width = width;
+            this.height = height;
+            this.bgColor = bgColor;
+            this.X = 0;
+            this.Y = 0;
+            this.div = null;
+        }
+
+        init(body) {
+            let food = document.createElement("div");
+            food.innerHTML = "🐎";
+            food.id = "food";
+            food.style.width = this.width + "px";
+            food.style.height = this.height + "px";
+            food.style.backgroundColor = this.bgColor;
+            this.X = Math.floor(Math.random() * body.offsetWidth / this.width);
+            this.Y = Math.floor(Math.random() * body.offsetHeight / this.height);
+            food.style.left = this.X * this.width + "px";
+            food.style.top = this.Y * this.height + "px";
+            body.appendChild(food);
+            this.parentElement = body;
+            this.div = food;
+        }
+
+        next() {
+            this.remove();
+            this.init(this.parentElement);
+        }
+
+        remove() {
+            this.parentElement.removeChild(this.div);
+            this.div = null;
+        }
+    }
+
+    /** snake*/
+    class Snake {
+        constructor(width, height, dir = 1) {
+            this.width = width;
+            this.height = height;
+            this.dir = dir;
+            this.snBody = [{"X": 10, "Y": 12, "bgColor": "red"}, {"X": 9, "Y": 12, "bgColor": "orange"}];
+            this.div = [];
+            this.adddiv = 0;
+            this.deadline = [0, 0, 0, 0];
+            this.lastlength = 0;
+        }
+
+        init(body) {
+            for (let i = 0; i < this.snBody.length; i++) {
+                let divsn = document.createElement("div");
+                divsn.className = "snake";
+                divsn.style.width = this.width + "px";
+                divsn.style.height = this.height + "px";
+                divsn.style.backgroundColor = this.snBody[i].bgColor;
+                divsn.style.left = this.snBody[i].X * this.width + "px";
+                divsn.style.top = this.snBody[i].Y * this.height + "px";
+                body.appendChild(divsn);
+                this.div[i] = divsn;
+                this.parentElement = body;
+                this.deadline[2] = body.offsetWidth;
+                this.deadline[3] = body.offsetHeight;
+            }
+            this.div[0].innerHTML = "🐍";
+        }
+
+        move() {
+            // //并发bug处理,防止undefined,只是第二局会加速而已(
+            // if (!this.div[0]) {
+            //     console.log("并发你🐎呢");
+            //     return
+            // }
+            let divsn;
+            if (this.adddiv > 0) {
+                divsn = this.div[this.div.length - 1].cloneNode(true);
+            }
+            for (let i = this.div.length - 1; i > 0; i--) {
+                this.div[i].style.left = this.div[i - 1].style.left;
+                this.div[i].style.top = this.div[i - 1].style.top;
+            }
+            switch (this.dir) {
+                case 0:
+                    this.div[0].style.top = this.div[0].offsetTop - this.height + "px";
+                    break;
+                case 1:
+                    this.div[0].style.left = this.div[0].offsetLeft + this.width + "px";
+                    break;
+                case 2:
+                    this.div[0].style.top = this.div[0].offsetTop + this.height + "px";
+                    break;
+                case 3:
+                    this.div[0].style.left = this.div[0].offsetLeft - this.width + "px";
+                    break;
+                default:
+            }
+            if (divsn) {
+                this.div[0].parentNode.appendChild(divsn);
+                this.div.push(divsn);
+                this.adddiv--;
+            }
+        }
+
+        add(n = 1) {
+            this.adddiv += n;
+        }
+
+        remove() {
+            this.lastlength = this.div.length;
+            this.div.forEach((value => this.parentElement.removeChild(value)));
+            this.div = [];
+            this.dir = 1;
+            return this.lastlength;
+        }
+    }
+
+    /** game*/
+    class Game {
+        /*这样好像也可以创建属性
+        map = new view.Map(1000, 700, "#ccc");
+        */
+
+        constructor() {
+            this.map = new Map(1000, 700, "#ccc");
+            this.food = new Food(20, 20, "green");
+            this.snake = new Snake(20, 20, 1);
+            this.div = document.getElementById("game");
+            this.div = document.createElement("div");
+            this.div.id = "game";
+            this.time = [];
+            this.slowtime = [];
+            this.delay = 100;
+        }
+
+        init() {
+            this.div.style.display = "block";
+            this.div.innerHTML = '<div id="game_text">想玩🐎? </div> <button id="game_btn" onclick="game.start()">开始 </button>';
+            this.map.init();
+            this.map.div.appendChild(this.div);
+        }
+
+        start() {
+            this.div.style.display = "none";
+            this.food.init(this.map.div);
+            this.snake.init(this.map.div);
+            let _this = this;
+            this.continue(this.delay);
+            this.slow();
+            document.onkeydown = event => {
+                // console.log(event);
+                const {keyCode} = event;
+                switch (keyCode) {
+                    case 38:
+                    case 104:
+                    case 87:
+                        game.snake.dir = game.snake.dir === 2 ? 2 : 0;
+                        break;
+                    case 39:
+                    case 102:
+                    case 68:
+                        game.snake.dir = game.snake.dir === 3 ? 3 : 1;
+                        break;
+                    case 40:
+                    case 98:
+                    case 83:
+                        game.snake.dir = game.snake.dir === 0 ? 0 : 2;
+                        break;
+                    case 37:
+                    case 100:
+                    case 65:
+                        game.snake.dir = game.snake.dir === 1 ? 1 : 3;
+                        break;
+                    case 101:
+                    case 32:
+                        if (_this.time.length > 0) {
+                            _this.stop();
+                        } else {
+                            _this.continue();
+                            if (_this.slowtime.length > 0)
+                                _this.slow();
+                        }
+                        break;
+                    default:
+                }
+            };
+        }
+
+        dead() {
+            this.stopSlow();
+            this.stop();
+            document.getElementById("game_text").innerHTML = "你" + this.snake.remove() + "厘米";
+            this.food.remove();
+            // this.snake.remove();
+            this.div.style.display = "block";
+            this.delay = 100;
+        }
+
+        stop() {
+
+            while (this.time.length > 0) {
+                clearInterval(this.time.pop());
+            }
+        }
+
+        continue(time = 100) {
+            let _this = this;
+            this.time.push(setInterval(() => {
+                _this.snake.move();
+                if (_this.snake.div[0].offsetTop === _this.food.div.offsetTop &&
+                    _this.snake.div[0].offsetLeft === _this.food.div.offsetLeft) {
+                    _this.snake.add(10);
+                    _this.food.next();
+                }
+                if (_this.snake.div[0].offsetLeft < _this.snake.deadline[0] ||
+                    _this.snake.div[0].offsetLeft >= _this.snake.deadline[2] ||
+                    _this.snake.div[0].offsetTop < _this.snake.deadline[1] ||
+                    _this.snake.div[0].offsetTop >= _this.snake.deadline[3])
+                    _this.dead();
+                for (let i = 1; i < _this.snake.div.length; i++) {
+                    if (_this.snake.div[i].offsetTop === _this.snake.div[0].offsetTop &&
+                        _this.snake.div[i].offsetLeft === _this.snake.div[0].offsetLeft) {
+                        _this.dead();
+                        break;
+                    }
+                }
+            }, time))
+        }
+
+        slow() {
+            const _this = this;
+            this.slowtime.push(setInterval(() => {
+                if (this.time.length > 0) {
+                    _this.stop();
+                    _this.continue(_this.delay--);
+                }
+            }, 1000 * 5))
+
+        }
+
+        stopSlow() {
+            while (this.slowtime.length > 0) {
+                clearInterval(this.slowtime.pop());
+            }
+        }
+    }
+
+    window.game = new Game();
+    game.init();
+</script>
+</html>
