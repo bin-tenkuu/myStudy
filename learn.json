@@ -21,10 +21,10 @@
 	},
 	{
 		"name": "我的404页面模板",
-		"url": "./404.html"
+		"url": "../404.html"
 	},
 	{
 		"name": "另一个404模板",
-		"url": "./black-cool/index.html"
+		"url": "../black-cool/index.html"
 	}
 ]
