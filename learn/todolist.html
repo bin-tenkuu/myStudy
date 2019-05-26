@@ -13,7 +13,7 @@
 	<div class="todo-container">
 		<div class="todo-wrap">
 			<div class="todo-header">
-				<input id="newTodo" placeholder="请输入你的任务名称，按回车键确认" type="text"/>
+				<label for="newTodo"><input id="newTodo" placeholder="请输入你的任务名称，按回车键确认" type="text"/></label>
 			</div>
 			<ul class="todo-main">
 			</ul>
@@ -34,11 +34,11 @@
 		{"content": "睡觉", "isComplete": false},
 		{"content": "打豆豆", "isComplete": false}
 	];
-	$(".todo-main").on("mouseenter", "li", function () {
-		$(this).css("backgroundColor", "#EEEEEE").children("button").stop().show(100)
-	}).on("mouseleave", "li", function () {
-		$(this).css("backgroundColor", "#FFFFFF").children("button").stop().hide(100)
-	}).on("click", "button", function () {
+	$(".todo-wrap").on("mouseenter", ".todo-main>li", function () {
+		$(this).css("backgroundColor", "#EEEEEE").children("button").show()
+	}).on("mouseleave", ".todo-main>li", function () {
+		$(this).css("backgroundColor", "#FFFFFF").children("button").hide()
+	}).on("click", ".todo-main button", function () {
 		$(this).parent("li").slideUp(200, function () {
 			dataJson.splice($(this).index(), 1);
 			$(this).remove();
@@ -49,8 +49,12 @@
 		let e = $(this).parent().parent();
 		dataJson[e.index()].isComplete = $(this).prop("checked");
 		count();
-	});
-	$("#newTodo").keyup(function (e) {
+	}).on("click", "#checkAll", function () {
+		let flag = $(this).prop("checked");
+		$(".todo-main>.todoItem input").prop("checked", flag);
+		dataJson.forEach(value => value["isComplete"] = flag);
+		count();
+	}).on("keyup", "#newTodo", function (e) {
 		let text = $(this).val().trim();
 		if (e.key === "Enter" && text.length > 0) {
 			dataJson.unshift({"content": text, "isComplete": false});
@@ -59,14 +63,7 @@
 			countall();
 			count();
 		}
-	});
-	$("#checkAll").click(function () {
-		let flag = $(this).prop("checked");
-		$(".todo-main>.todoItem input").prop("checked", flag);
-		dataJson.forEach(value => value["isComplete"] = flag);
-		count();
-	});
-	$("#removeAllCompleted").click(function () {
+	}).on("click", "#removeAllCompleted", function () {
 		$(".todo-main>.todoItem input:checked").each(function () {
 			$(this).parent().siblings("button").trigger("click")
 		})
