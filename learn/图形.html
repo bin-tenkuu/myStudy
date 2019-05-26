@@ -8,7 +8,7 @@
 	<title>圆⚪&尺子📏</title>
 	<style>
 		html, body, div {
-			margin: 5px;
+			margin: 2px;
 			padding: 0;
 		}
 
@@ -22,17 +22,21 @@
 			box-sizing: border-box;
 		}
 
-		div::after {
+		body::after {
 			content: '';
 			display: block;
 			clear: both;
 		}
 
 		.chizi {
+			height: 100px;
+			display: block;
 			width: 500px;
+			float: left;
+			background-color: lightgreen;
 		}
 
-		.chizi > ul::after {
+		.chizi::after {
 			width: 0;
 			height: 0;
 			content: '';
@@ -40,12 +44,39 @@
 			clear: both;
 		}
 
-		.chizi > ul > li {
+		.chizi > li {
 			margin-right: 2px;
 			width: 2px;
 			height: 10px;
 			background-color: #000000;
 			float: left;
+			list-style: none;
+			counter-increment: num;
+		}
+
+		.chizi > li:nth-of-type(5n+1) {
+			height: 15px;
+		}
+
+		.chizi > li:nth-of-type(10n+1) {
+			width: 3px;
+			height: 20px;
+		}
+
+		.chizi > li:nth-of-type(10n)::after {
+			content: counter(num);
+			display: block;
+			position: relative;
+			top: 20px;
+			left: -5px;
+		}
+
+		.chizi > li:first-child::after {
+			content: '0';
+			display: block;
+			position: relative;
+			top: 20px;
+			left: -5px;
 		}
 	</style>
 </head>
@@ -54,109 +85,107 @@
 <div style="border-radius: 50%/50%;width: 200px;"></div>
 <div style="border-bottom: 100px solid #000;border-left: 50px solid transparent;border-right: 50px solid transparent;">
 </div>
-<div class="chizi">
-	<ul>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
-</div>
+<ul class="chizi">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
 </body>
 </html>

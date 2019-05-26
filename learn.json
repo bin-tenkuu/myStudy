@@ -28,7 +28,11 @@
     "url": "../black-cool/index.html"
   },
   {
-    "name": "css样式太极图",
+    "name": "纯css样式太极图",
     "url": "./learn/太极图.html"
+  },
+  {
+    "name": "纯css样式各种图案",
+    "url": "./learn/图形.html"
   }
 ]
