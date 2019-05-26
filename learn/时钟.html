@@ -24,7 +24,7 @@
 			margin: 0 auto;
 			position: relative;
 			border-radius: 50%;
-			border: 2px solid #000;
+			border: 2px solid rgba(0, 0, 0, 0.5);
 			z-index: 0;
 		}
 
@@ -46,7 +46,7 @@
 			top: 50px;
 			left: 149px;
 			transform-origin: 1px 100px;
-			border-radius: 1px 1px 0 0;
+			border-radius: 100%/10%;
 			z-index: 1;
 		}
 
@@ -56,8 +56,8 @@
 			background-color: rgba(55, 55, 55, 0.7);
 			top: 70px;
 			left: 148px;
-			transform-origin: 3px 80px;
-			border-radius: 2px 2px 0 0;
+			transform-origin: 2px 80px;
+			border-radius: 100%/10%;
 			z-index: 2;
 		}
 
@@ -69,7 +69,7 @@
 			left: 147px;
 			transform-origin: 3px 60px;
 			z-index: 3;
-			border-radius: 3px 3px 0 0;
+			border-radius: 100%/10%;
 		}
 
 		#cycle {
@@ -104,9 +104,26 @@
 			display: block;
 			position: relative;
 			top: 20px;
-			left: 10px;
+			left: -2px;
 			transform: rotate(6deg);
 			text-align: center;
+			width: 30px;
+		}
+
+		#cycle > li:nth-of-type(15n)::after {
+			font-size: 1.75em;
+		}
+
+		#cycle > li:nth-of-type(15)::after {
+			transform: rotate(-84deg);
+		}
+
+		#cycle > li:nth-of-type(30)::after {
+			transform: rotate(186deg);
+		}
+
+		#cycle > li:nth-of-type(45)::after {
+			transform: rotate(96deg);
 		}
 
 		#cycle::after {
@@ -114,10 +131,21 @@
 			display: block;
 			clear: both;
 		}
+
+		#number {
+			top: 60%;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 160px;
+			height: 40px;
+			font: 40px/1 "黑体";
+			text-align: center;
+		}
 	</style>
 </head>
 <body>
 <div id="clock">
+	<div id="number">88-88-88</div>
 	<div id="hour"></div>
 	<div id="min"></div>
 	<div id="sec"></div>
@@ -194,9 +222,12 @@
 			let sec = date.getSeconds();
 			let min = date.getMinutes() + sec / 60;
 			let hour = date.getHours() + min / 60;
-			$("#sec")[0].style.transform = "rotate(" + 6 * sec + "deg)";
-			$("#min")[0].style.transform = "rotate(" + 6 * min + "deg)";
-			$("#hour")[0].style.transform = "rotate(" + 30 * hour + "deg)";
+			$("#number").html(('' + date.getFullYear()).slice(-2)
+					+ "-" + ('0' + (date.getMonth() + 1)).slice(-2)
+					+ "-" + ('0' + date.getDate()).slice(-2));
+			$("#sec")[0].style.transform = "rotate(" + (6 * sec) + "deg)";
+			$("#min")[0].style.transform = "rotate(" + (6 * min) + "deg)";
+			$("#hour")[0].style.transform = "rotate(" + (30 * hour) + "deg)";
 		}, 999)
 	})
 </script>
