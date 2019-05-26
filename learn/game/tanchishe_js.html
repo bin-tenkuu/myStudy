@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="" name="keywords">
     <meta content="" name="description">
-    <title>贪吃蛇 by:bin</title>
+    <title>贪吃蛇js版 by:bin</title>
     <style>
         div, button {
             padding: 0;
@@ -151,11 +151,6 @@
         }
 
         move() {
-            // //并发bug处理,防止undefined,只是第二局会加速而已(
-            // if (!this.div[0]) {
-            //     console.log("并发你🐎呢");
-            //     return
-            // }
             let divsn;
             if (this.adddiv > 0) {
                 divsn = this.div[this.div.length - 1].cloneNode(true);
@@ -201,10 +196,6 @@
 
     /** game*/
     class Game {
-        /*这样好像也可以创建属性
-        map = new view.Map(1000, 700, "#ccc");
-        */
-
         constructor() {
             this.map = new Map(1000, 700, "#ccc");
             this.food = new Food(20, 20, "green");
@@ -232,7 +223,6 @@
             this.continue(this.delay);
             this.slow();
             document.onkeydown = event => {
-                // console.log(event);
                 const {keyCode} = event;
                 switch (keyCode) {
                     case 38:
@@ -275,7 +265,6 @@
             this.stop();
             document.getElementById("game_text").innerHTML = "你" + this.snake.remove() + "厘米";
             this.food.remove();
-            // this.snake.remove();
             this.div.style.display = "block";
             this.delay = 100;
         }
