@@ -1,103 +1,103 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-    <meta charset="UTF-8">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-    <title>todolist</title>
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <link href="todolist_file/index.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+	<title>todolist</title>
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<link href="todolist_file/index.css" rel="stylesheet">
 </head>
 <body>
 <div id="root">
-    <div class="todo-container">
-        <div class="todo-wrap">
-            <div class="todo-header">
-                <input id="newTodo" placeholder="请输入你的任务名称，按回车键确认" type="text"/>
-            </div>
-            <ul class="todo-main">
-            </ul>
-            <div class="todo-footer">
-                <label>
-                    <input id="checkAll" type="checkbox"/>
-                </label>
-                <span>已完成<span id="allCompletedTodos">0</span> / 全部<span id="allTodos">0</span></span>
-                <button class="btn btn-danger" id="removeAllCompleted">清除已完成任务</button>
-            </div>
-        </div>
-    </div>
+	<div class="todo-container">
+		<div class="todo-wrap">
+			<div class="todo-header">
+				<input id="newTodo" placeholder="请输入你的任务名称，按回车键确认" type="text"/>
+			</div>
+			<ul class="todo-main">
+			</ul>
+			<div class="todo-footer">
+				<label>
+					<input id="checkAll" type="checkbox"/>
+				</label>
+				<span>已完成<span id="allCompletedTodos">0</span> / 全部<span id="allTodos">0</span></span>
+				<button class="btn btn-danger" id="removeAllCompleted">清除已完成任务</button>
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 <script>
-    window.dataJson = [
-        {"content": "抽烟", "isComplete": false},
-        {"content": "喝酒", "isComplete": false},
-        {"content": "烫头", "isComplete": false}
-    ];
-    $(".todo-main").on("mouseenter", "li", function () {
-        $(this).css("backgroundColor", "#EEEEEE").children("button").stop().show(100)
-    }).on("mouseleave", "li", function () {
-        $(this).css("backgroundColor", "#FFFFFF").children("button").stop().hide(100)
-    }).on("click", "button", function () {
-        $(this).parent("li").slideUp(200, function () {
-            dataJson.splice($(this).index(), 1);
-            $(this).remove();
-            countall();
-            count();
-        })
-    }).on("click", "input", function () {
-        let e = $(this).parent().parent();
-        dataJson[e.index()].isComplete = $(this).prop("checked");
-        count();
-    });
-    $("#newTodo").keyup(function (e) {
-        let text = $(this).val().trim();
-        if (e.key === "Enter" && text.length > 0) {
-            dataJson.unshift({"content": text, "isComplete": false});
-            build(text).hide().prependTo($(".todo-main")).slideDown(200);
-            $(this).val("");
-            countall();
-            count();
-        }
-    });
-    $("#checkAll").click(function () {
-        let flag = $(this).prop("checked");
-        $(".todo-main>.todoItem input").prop("checked", flag);
-        dataJson.forEach(value => value["isComplete"] = flag);
-        count();
-    });
-    $("#removeAllCompleted").click(function () {
-        $(".todo-main>.todoItem input:checked").each(function () {
-            $(this).parent().siblings("button").trigger("click")
-        })
-    });
+	window.dataJson = [
+		{"content": "吃饭", "isComplete": false},
+		{"content": "睡觉", "isComplete": false},
+		{"content": "打豆豆", "isComplete": false}
+	];
+	$(".todo-main").on("mouseenter", "li", function () {
+		$(this).css("backgroundColor", "#EEEEEE").children("button").stop().show(100)
+	}).on("mouseleave", "li", function () {
+		$(this).css("backgroundColor", "#FFFFFF").children("button").stop().hide(100)
+	}).on("click", "button", function () {
+		$(this).parent("li").slideUp(200, function () {
+			dataJson.splice($(this).index(), 1);
+			$(this).remove();
+			countall();
+			count();
+		})
+	}).on("click", "input", function () {
+		let e = $(this).parent().parent();
+		dataJson[e.index()].isComplete = $(this).prop("checked");
+		count();
+	});
+	$("#newTodo").keyup(function (e) {
+		let text = $(this).val().trim();
+		if (e.key === "Enter" && text.length > 0) {
+			dataJson.unshift({"content": text, "isComplete": false});
+			build(text).hide().prependTo($(".todo-main")).slideDown(200);
+			$(this).val("");
+			countall();
+			count();
+		}
+	});
+	$("#checkAll").click(function () {
+		let flag = $(this).prop("checked");
+		$(".todo-main>.todoItem input").prop("checked", flag);
+		dataJson.forEach(value => value["isComplete"] = flag);
+		count();
+	});
+	$("#removeAllCompleted").click(function () {
+		$(".todo-main>.todoItem input:checked").each(function () {
+			$(this).parent().siblings("button").trigger("click")
+		})
+	});
 
-    /**
-     * onmessage可替代
-     */
-    function bind() {
-        for (let i = 0; i < dataJson.length; i++) {
-            $(".todo-main").append(build(dataJson[i].content));
-            countall();
-        }
-    }
+	/**
+	 * onmessage可替代
+	 */
+	function bind() {
+		for (let i = 0; i < dataJson.length; i++) {
+			$(".todo-main").append(build(dataJson[i].content));
+			countall();
+		}
+	}
 
-    function countall() {
-        $("#allTodos").text(dataJson.length)
-    }
+	function countall() {
+		$("#allTodos").text(dataJson.length)
+	}
 
-    function count() {
-        let num = $(".todo-main>.todoItem input:checked").length;
-        $("#allCompletedTodos").text(num);
-        $("#checkAll").prop("checked", num === dataJson.length)
-    }
+	function count() {
+		let num = $(".todo-main>.todoItem input:checked").length;
+		$("#allCompletedTodos").text(num);
+		$("#checkAll").prop("checked", num === dataJson.length)
+	}
 
-    function build(name) {
-        return $('<li class="todoItem" style="background-color: rgb(255, 255, 255);"><label><input type="checkbox"><span>' +
-            name + '</span></label><button class="btn btn-danger" style="display: none;">删除</button></li>');
-    }
+	function build(name) {
+		return $('<li class="todoItem" style="background-color: rgb(255, 255, 255);"><label><input type="checkbox"><span>' +
+				name + '</span></label><button class="btn btn-danger" style="display: none;">删除</button></li>');
+	}
 
-    bind();
-    count();
+	bind();
+	count();
 </script>
 </html>
