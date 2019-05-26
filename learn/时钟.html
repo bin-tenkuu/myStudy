@@ -188,9 +188,7 @@
 </body>
 <script>
 	$(() => {
-		$("#cycle>li").each((_index, _this) => {
-			_this.style.transform = "rotate(" + 6 * _index + "deg)";
-		});
+		$("#cycle>li").each((_index, _this) => _this.style.transform = "rotate(" + 6 * _index + "deg)");
 		setInterval(() => {
 			let date = new Date();
 			let sec = date.getSeconds();
