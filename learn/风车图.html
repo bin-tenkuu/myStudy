@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<title>风车图</title>
+	<style>
+		ul, li {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		ul {
+			margin: 100px auto 0;
+			width: 215px;
+			height: 215px;
+			animation: fengche 1s linear infinite;
+			/*background-color: gray;*/
+		}
+
+		ul > li {
+			width: 100px;
+			height: 100px;
+			background-color: lightgreen;
+			margin-left: 15px;
+			margin-top: 15px;
+			float: left;
+		}
+
+		ul > li:nth-of-type(1), ul > li:nth-of-type(2) {
+			margin-top: 0;
+		}
+
+		ul > li:nth-of-type(1), ul > li:nth-of-type(3) {
+			margin-left: 0;
+		}
+
+		ul > li:nth-of-type(1), ul > li:nth-of-type(4) {
+
+			border-radius: 0 70px 0 70px;
+		}
+
+		ul > li:nth-of-type(2), ul > li:nth-of-type(3) {
+			border-radius: 70px 0 70px 0;
+		}
+
+		@keyframes fengche {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>
