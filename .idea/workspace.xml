@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14310aec-3fe2-48b8-a312-1c0b3ff2997c" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/learn/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/learn/home_file/clos.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/learn/home_file/full.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/learn/home_file/home.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/learn/home_file/open.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/learn/home_file/prev.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/learn/home_file/refresh.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/learn/滚动条窗帘.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/learn/盒子拖动.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learn/game/tanchishe_pe.html" beforeDir="false" afterPath="$PROJECT_DIR$/learn/game/tanchishe_pe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learn/图形.html" beforeDir="false" afterPath="$PROJECT_DIR$/learn/图形.html" afterDir="false" />
-    </list>
+    <list default="true" id="14310aec-3fe2-48b8-a312-1c0b3ff2997c" name="默认更改列表" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -74,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/learn/图形.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-620">
-              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+            <state relative-caret-position="282">
+              <caret line="53" column="35" lean-forward="true" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -104,10 +91,10 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/learn/game/tanchishe_pe.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
+            <state relative-caret-position="1738">
               <caret line="217" column="13" selection-start-line="217" selection-start-column="13" selection-end-line="217" selection-end-column="13" />
               <folding>
                 <element signature="e#1077#1364#0" />
@@ -155,7 +142,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="291" />
     <option name="y" value="30" />
     <option name="width" value="1218" />
@@ -245,18 +232,18 @@
       <workItem from="1559826765020" duration="166000" />
       <workItem from="1560247337112" duration="610000" />
       <workItem from="1560335754858" duration="594000" />
-      <workItem from="1560683168724" duration="2256000" />
+      <workItem from="1560683168724" duration="3531000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30446000" />
+    <option name="totallyTimeSpent" value="31721000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="291" y="30" width="1218" height="976" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15486258" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24957411" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -361,19 +348,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/learn/图形.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-620">
-          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#ul#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/learn/home.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -385,7 +359,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/learn/game/tanchishe_pe.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
+        <state relative-caret-position="1738">
           <caret line="217" column="13" selection-start-line="217" selection-start-column="13" selection-end-line="217" selection-end-column="13" />
           <folding>
             <element signature="e#1077#1364#0" />
@@ -393,6 +367,19 @@
             <element signature="e#2326#4459#0" />
             <element signature="e#4484#7989#0" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/learn/图形.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="53" column="35" lean-forward="true" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#ul#0;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
