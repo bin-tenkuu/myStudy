@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<title>扇形home键</title>
+	<style>
+		html, body, div, ul, li {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		#warp, #home, #list {
+			width: 49px;
+			height: 49px;
+			position: absolute;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			border-radius: 50%;
+		}
+
+		#warp {
+			width: 150px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			border-radius: 50%;
+		}
+
+		#home {
+			background: url(home_file/home.png) 0 0 no-repeat;
+			z-index: 1;
+			transition: 500ms;
+		}
+
+		#list > li {
+			width: 42px;
+			height: 42px;
+			position: absolute;
+			top: 4px;
+			left: 4px;
+			transition: 500ms;
+		}
+
+		img {
+			border-radius: 50%;
+		}
+	</style>
+	<script>
+		$(() => {
+			let flag = true;
+			$("#home").click(e => {
+				const li = $("#list>li");
+				const n = Math.PI / 180 / (li.length - 1) * 90;
+				const l = li.parent().parent().width();
+				if (flag) {
+					li.each((index, element) => {
+						$(element).css({
+							top: Math.sin(n * index) * l + "px",
+							left: Math.cos(n * index) * l + "px",
+							transform: "rotate(540deg)",
+							transitionDelay: 30 * index + "ms"
+						});
+					});
+					e.target.style.transform = "rotate(360deg)";
+				} else {
+					li.each((index, element) => {
+						$(element).css({
+							top: "4px",
+							left: "4px",
+							transform: "rotate(0)",
+							transitionDelay: "0ms"
+						});
+					});
+					e.target.style.transform = "rotate(0)";
+				}
+				flag = !flag;
+			})
+		})
+	</script>
+</head>
+<body>
+<div id="warp">
+	<div id="home"></div>
+	<ul id="list">
+		<li><a href="javascript:void(0)"><img src="home_file/clos.png" alt=""></a></li>
+		<li><a href="javascript:void(0)"><img src="home_file/full.png" alt=""></a></li>
+		<li><a href="javascript:void(0)"><img src="home_file/open.png" alt=""></a></li>
+		<li><a href="javascript:void(0)"><img src="home_file/prev.png" alt=""></a></li>
+		<li><a href="javascript:void(0)"><img src="home_file/refresh.png" alt=""></a></li>
+	</ul>
+</div>
+</body>
+</html>

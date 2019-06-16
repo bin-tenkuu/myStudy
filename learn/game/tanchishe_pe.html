@@ -13,7 +13,9 @@
 		}
 
 		html, body {
-			height: 98%;
+			height: 100%;
+			overflow: hidden;
+			margin: 5px;
 		}
 
 		#map {
@@ -65,8 +67,6 @@
 <body>
 </body>
 <script>
-	"use strict";
-
 	/** map*/
 	class Map {
 		constructor(bgColor) {
@@ -227,10 +227,6 @@
 			this.add = 5;
 		}
 
-		set setadd(n) {
-			this.add = n > 0 ? n : 0;
-		}
-
 		get gaming() {
 			return this.snake.snake.length > 0;
 		}
@@ -365,6 +361,8 @@
 	}
 
 	$(() => {
+		let html = $("html,body");
+		html.height(html.height() - html.height() % 20);
 		window.game = new Game();
 		game.init();
 		$(window).keydown(e => game.keydown(e)).click(e => game.click(e))
